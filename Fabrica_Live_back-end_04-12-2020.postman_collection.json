@@ -12,11 +12,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/mensagens",
+					"raw": "{{API_URL}}/mensagens",
 					"host": [
-						"localhost"
+						"{{API_URL}}"
 					],
-					"port": "3000",
 					"path": [
 						"mensagens"
 					]
@@ -30,11 +29,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/mensagens/1",
+					"raw": "{{API_URL}}/mensagens/1",
 					"host": [
-						"localhost"
+						"{{API_URL}}"
 					],
-					"port": "3000",
 					"path": [
 						"mensagens",
 						"1"
@@ -58,11 +56,10 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/mensagens",
+					"raw": "{{API_URL}}/mensagens",
 					"host": [
-						"localhost"
+						"{{API_URL}}"
 					],
-					"port": "3000",
 					"path": [
 						"mensagens"
 					]
@@ -85,11 +82,10 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/mensagens/3",
+					"raw": "{{API_URL}}/mensagens/3",
 					"host": [
-						"localhost"
+						"{{API_URL}}"
 					],
-					"port": "3000",
 					"path": [
 						"mensagens",
 						"3"
@@ -104,11 +100,10 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/mensagens/1",
+					"raw": "{{API_URL}}/mensagens/1",
 					"host": [
-						"localhost"
+						"{{API_URL}}"
 					],
-					"port": "3000",
 					"path": [
 						"mensagens",
 						"1"
