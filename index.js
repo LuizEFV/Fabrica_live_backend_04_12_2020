@@ -23,8 +23,20 @@ CRUD: Create, Read (Single & All), Update and Delete
 */
 
 const mensagens = [
-    "Essa é a primeira mensagem",
-    "Essa é a segunda mensagem"
+    { 
+       "id": 1,
+       "texto": "Essa é a primeira mensagem",
+
+    },
+
+
+    {
+       "id": 2,
+       "texto": "Essa é a segunda mensagem",
+
+    
+    },
+    
 ];
 
 /* - [GET] /mensagens - Retorna a lista de mensagens */
@@ -33,34 +45,59 @@ app.get('/mensagens', (req, res) => {
     res.send(mensagens.filter(Boolean));
 })
 
-/* - [GET] /mensagens - Retorna a lista de mensagens */
+/* - [GET] /mensagens/{id} - Retorna apenas uma única mensagem pelo ID */
 
 app.get('/mensagens/:id', (req, res) => {
         const id = req.params.id - 1;
+
         const mensagem = mensagens[id];
+
+        if (!mensagem) {
+            res.send('Mensagem não encontrada.');
+
+            return;
+        }
+
         res.send(mensagem);
 });
 
 /* [POST] /mensagens - Cria uma nova mensagem */
 app.post('/mensagens', (req, res) => {
-    const mensagem = req.body.mensagem;
+    const mensagem = req.body;
 
+    if (!mensagem || !mensagem.texto) {
+
+        res.send('Mensagem Inválida.');
+
+        return;
+    }
+
+    mensagem.id = mensagens.length + 1;
     mensagens.push(mensagem);
 
-    res.send(`Mensagem criada com sucesso: '${mensagem}'.`);
+    res.send(mensagem);
 });
 
 /* - [PUT] /mensagens/{id} - Atualiza uma mensagem pelo ID */
 
-app.put('/mensagens/:id', (req, res) =>{
+app.put('/mensagens/:id', (req, res) => {
     const id = req.params.id - 1;
 
-    const mensagem = req.body.mensagem;
+    const mensagem = mensagens[id];
 
-    mensagens[id] = mensagem;
+    const novoTexto = req.body.texto;
 
-    res.send(`Mensagem atualizada com sucesso: '${mensagem}'.`);
-})
+    if (!novoTexto) {
+        res.send('Mensagem inválida');
+        
+        return;
+    }
+
+    mensagem.texto = novoTexto;
+
+   
+    res.send(mensagem);
+});
 
 // - [DELETE] /mensagens/{id} - Remover uma mensagem pelo ID
 
